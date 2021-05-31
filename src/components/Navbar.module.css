@@ -1,0 +1,14 @@
+.sidebar {
+    grid-area: side;
+    background-color: #1f204125;
+    margin: 3px 0 0 0;
+    border-radius: 5px;
+}
+
+.list {
+    list-style-type: none;
+}
+
+.link {
+    text-decoration: none;
+}
