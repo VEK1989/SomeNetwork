@@ -1,4 +1,5 @@
 import classes from './Profile.module.css'
+import MyWall from './MyWall/MyWall'
 
 const Profile = () => {
 	return (
@@ -6,10 +7,7 @@ const Profile = () => {
 			<div>
 				Ava +description
 			</div>
-			<div>My wall
-				<div>my post</div>
-				<div>my post2</div>
-			</div>
+			<MyWall />
 		</main>
 	);
 };
