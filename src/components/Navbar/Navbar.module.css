@@ -3,12 +3,32 @@
     background-color: #1f204125;
     margin: 3px 0 0 0;
     border-radius: 5px;
+    padding: 20px;
 }
 
 .list {
     list-style-type: none;
+    padding: 0;
+}
+
+.list li{
+    margin: 0 0 5px 0;
 }
 
 .link {
     text-decoration: none;
+    color: black;
+    transition: 0.5s;
+}
+
+.active{
+    color: #BC9CFF
+}
+
+.link:hover{
+    color: #BC9CFF;
+}
+
+.link:active{
+    color: #8BA4F9;
 }

@@ -1,6 +1,19 @@
 .wall{
+	margin: 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: center;
+}
+
+.posts{
+	margin-top: 10px;
+}
+
+.writePost{
+	resize: none;
+	outline: #BC9CFF;
+	border-radius: 5px;
+	border: 2px solid #BC9CFF;
+	margin: 0 0 5px 0;
 }

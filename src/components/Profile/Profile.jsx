@@ -1,12 +1,11 @@
 import classes from './Profile.module.css'
 import MyWall from './MyWall/MyWall'
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = () => {
 	return (
 		<main className={classes.profile}>
-			<div>
-				Ava +description
-			</div>
+			<ProfileInfo />
 			<MyWall />
 		</main>
 	);
