@@ -1,0 +1,22 @@
+.photo{
+	border-radius: 50%;
+}
+
+.chat{
+	display: block;
+	margin-top: 20px;
+}
+
+.active{
+	color: #6FCF97;
+}
+
+.chat a{
+	text-decoration: none;
+	color: black;
+    transition: 0.5s;
+}
+
+.chat a:hover{
+	color: #6FCF97;
+}

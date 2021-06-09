@@ -1,0 +1,22 @@
+.dialogs{
+	padding: 10px;
+}
+
+.dialog{
+	display: block;
+	padding: 8px;
+	width: 400px;
+	border-radius: 5px;
+	background-color: #6fcf9782;
+	margin: 10px 10px 10px 30px;
+	position: relative;
+}
+
+.dialog::after{
+	content: '';
+	position: absolute;
+	border: 8px solid transparent;
+    border-right: 15px solid #6fcf9782;
+    left: -23px;
+    top: 3px;
+}

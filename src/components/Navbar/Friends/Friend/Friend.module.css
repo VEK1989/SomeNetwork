@@ -1,0 +1,14 @@
+.friend {
+	width: 45px;
+	text-align: center;
+}
+
+.photo{
+	border: 1px solid blueviolet;
+	border-radius: 50%;
+}
+
+.name{
+	display: block;
+	font-size: 12px;
+}
