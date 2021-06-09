@@ -1,34 +1,35 @@
-import { NavLink } from 'react-router-dom';
+import React from 'react';
+import Chat from './Chat/Chat';
+import Dialogs from './Dialogs/Dialogs';
 import classes from './Messages.module.css';
 
-const Chat = (props) => {
-	let path = '/messages/' + props.id
+const Messages = (props) => {
+	let chatElement = props.state.chatData.map(c => <Chat name={c.name} id={c.id} />)
+	let messageElement = props.state.messageData.map(m => <Dialogs message={m.message} />)
+	let myMessage = React.createRef()
 
-	return <span className={classes.chat}>
-		<NavLink to={path} activeClassName={classes.active}>{props.name}</NavLink>
-	</span>
-}
+	let sendMessage = () => {
+		props.sendNewMessage()
+	}
 
-const Dialogs = (props) => {
-	return <span className={classes.dialog}>{props.message}</span>
-}
+	let inputMessage = () => {
+		let text = myMessage.current.value
+		props.modeMessageText(text)
+	}
 
-const Messages = () => {
 	return (
 		<div className={classes.messages}>
 			<div className={classes.chats}>
-				<Chat name='Andrey' id='1' />
-				<Chat name='Olga' id='2' />
-				<Chat name='Igor' id='3' />
-				<Chat name='Katya' id='4' />
-				<Chat name='Sergey' id='5' />
-				<Chat name='Viktor' id='6' />
+				{chatElement}
 			</div>
 			<div className={classes.dialogs}>
-				<Dialogs message='Hi! How are you' />
-				<Dialogs message='Hello' />
-				<Dialogs message='You made a cool project' />
-				<Dialogs message='Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus obcaecati sint doloremque, molestiae placeat commodi ducimus ut rem vitae officiis repudiandae libero tempora illum eos totam quaerat! Alias, voluptas assumenda.' />
+				<div>
+					{messageElement}
+				</div>
+				<div className={classes.sendMessage}>
+					<textarea onChange={inputMessage} value={props.state.messageText} ref={myMessage} className={classes.textMessage} cols="30" rows="5" />
+					<button className={classes.sendBtn} onClick={sendMessage}>Send</button>
+				</div>
 			</div>
 		</div>
 	);

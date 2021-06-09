@@ -8,19 +8,18 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
       <div className="wrapper">
         <Header />
-        <Navbar />
+        <Navbar state={props.state.sideBar} />
         <div className="conteiner">
-          <Route path="/profile" component={Profile} />
-          <Route path="/messages" component={Messages} />
-          <Route path="/news" component={News} />
-          <Route path="/music" component={Music} />
-          <Route path="/settings" component={Settings} />
-
+          <Route path="/profile" render={() => <Profile wallPage={props.state.wallPage} addNewPost={props.addNewPost} modePostText={props.modePostText} />} />
+          <Route path="/messages" render={() => <Messages state={props.state.messagePage} sendNewMessage={props.sendNewMessage} modeMessageText={props.modeMessageText} />} />
+          <Route path="/news" render={() => <News />} />
+          <Route path="/music" render={() => <Music />} />
+          <Route path="/settings" render={() => <Settings />} />
         </div>
       </div>
     </BrowserRouter>

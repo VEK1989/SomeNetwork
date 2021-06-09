@@ -1,15 +1,28 @@
+import React from 'react'
 import classes from './MyWall.module.css'
 import Post from './Post/Post'
 
-const MyWall = () => {
+const MyWall = (props) => {
+
+	let postElement = props.posts.map(p => <Post message={p.massage} likeCount={p.likeCount} />)
+	let myNewPost = React.createRef()
+
+	let addMyPost = () => {
+		props.addNewPost()
+	}
+
+	let onPostChange = () => {
+		let text = myNewPost.current.value
+
+		props.modePostText(text)
+	}
+
 	return (
 		<div className={classes.wall}><h3>My Wall</h3>
-			<textarea className={classes.writePost} placeholder="write a post" cols="30" rows="2"></textarea>
-			<button>Add post</button>
+			<textarea onChange={onPostChange} className={classes.writePost} ref={myNewPost} value={props.newPostText} cols="30" rows="2" />
+			<button className={classes.sendBtn} onClick={addMyPost}>Add post</button>
 			<div className={classes.posts}>
-				<Post message="Hello my friend" likeCount="3" />
-				<Post message="How are you" likeCount="7" />
-				<Post message="It's me!" likeCount="23" />
+				{postElement}
 			</div>
 		</div>
 	);
