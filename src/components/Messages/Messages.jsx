@@ -2,6 +2,7 @@ import React from 'react';
 import Chat from './Chat/Chat';
 import Dialogs from './Dialogs/Dialogs';
 import classes from './Messages.module.css';
+import { sendNewMessageActionCreator, modeMessageTextActionCreator } from '../../redux/state'
 
 const Messages = (props) => {
 	let chatElement = props.state.chatData.map(c => <Chat name={c.name} id={c.id} />)
@@ -9,12 +10,13 @@ const Messages = (props) => {
 	let myMessage = React.createRef()
 
 	let sendMessage = () => {
-		props.sendNewMessage()
+		props.dispatch(sendNewMessageActionCreator())
 	}
 
 	let inputMessage = () => {
 		let text = myMessage.current.value
-		props.modeMessageText(text)
+		let action = modeMessageTextActionCreator(text)
+		props.dispatch(action)
 	}
 
 	return (
@@ -23,7 +25,7 @@ const Messages = (props) => {
 				{chatElement}
 			</div>
 			<div className={classes.dialogs}>
-				<div>
+				<div className={classes.dialogsItem}>
 					{messageElement}
 				</div>
 				<div className={classes.sendMessage}>

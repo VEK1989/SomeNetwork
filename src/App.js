@@ -15,8 +15,8 @@ function App(props) {
         <Header />
         <Navbar state={props.state.sideBar} />
         <div className="conteiner">
-          <Route path="/profile" render={() => <Profile wallPage={props.state.wallPage} addNewPost={props.addNewPost} modePostText={props.modePostText} />} />
-          <Route path="/messages" render={() => <Messages state={props.state.messagePage} sendNewMessage={props.sendNewMessage} modeMessageText={props.modeMessageText} />} />
+          <Route path="/profile" render={() => <Profile wallPage={props.state.wallPage} dispatch={props.dispatch} />} />
+          <Route path="/messages" render={() => <Messages state={props.state.messagePage} dispatch={props.dispatch} />} />
           <Route path="/news" render={() => <News />} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/settings" render={() => <Settings />} />

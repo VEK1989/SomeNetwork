@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from './MyWall.module.css'
 import Post from './Post/Post'
+import { addNewPostActionCreator, modePostTextActionCreator } from '../../../redux/state'
 
 const MyWall = (props) => {
 
@@ -8,13 +9,14 @@ const MyWall = (props) => {
 	let myNewPost = React.createRef()
 
 	let addMyPost = () => {
-		props.addNewPost()
+		props.dispatch(addNewPostActionCreator())
 	}
 
 	let onPostChange = () => {
 		let text = myNewPost.current.value
+		let action = modePostTextActionCreator(text)
 
-		props.modePostText(text)
+		props.dispatch(action)
 	}
 
 	return (

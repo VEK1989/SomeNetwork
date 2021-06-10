@@ -10,6 +10,7 @@
 	background-color: #6fcf9782;
 	margin: 10px 10px 10px 30px;
 	position: relative;
+	word-break: break-all;
 }
 
 .dialog::after{

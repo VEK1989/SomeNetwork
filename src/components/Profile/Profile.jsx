@@ -6,7 +6,7 @@ const Profile = (props) => {
 	return (
 		<main className={classes.profile}>
 			<ProfileInfo />
-			<MyWall posts={props.wallPage.postData} newPostText={props.wallPage.newPostText} addNewPost={props.addNewPost} modePostText={props.modePostText} />
+			<MyWall posts={props.wallPage.postData} newPostText={props.wallPage.newPostText} dispatch={props.dispatch} />
 		</main>
 	);
 };
