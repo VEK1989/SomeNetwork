@@ -2,7 +2,7 @@ import React from 'react';
 import Chat from './Chat/Chat';
 import Dialogs from './Dialogs/Dialogs';
 import classes from './Messages.module.css';
-import { sendNewMessageActionCreator, modeMessageTextActionCreator } from '../../redux/state'
+import { sendNewMessageActionCreator, modeMessageTextActionCreator } from '../../redux/messagePage_reducer'
 
 const Messages = (props) => {
 	let chatElement = props.state.chatData.map(c => <Chat name={c.name} id={c.id} />)

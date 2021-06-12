@@ -1,7 +1,6 @@
-const ADD_NEW_POST = 'ADD-NEW-POST'
-const MODE_POST_TEXT = 'MODE-POST-TEXT'
-const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
-const MODE_MESSAGE_TEXT = 'MODE-MESSAGE-TEXT'
+import messagePageReducer from "./messagePage_reducer"
+import sideBarReducer from "./sideBar_reducer"
+import wallPageReducer from "./wallPage_reducer"
 
 let store = {
 	_renderEntireTree() { },
@@ -97,39 +96,12 @@ let store = {
 		this._renderEntireTree = observer
 	},
 	dispatch(action) {
-		if (action.type === ADD_NEW_POST) {
-			let newPost = {
-				id: this._state.wallPage.postData.length + 1,
-				message: this._state.wallPage.newPostText,
-				likeCount: 0,
-			}
-			this._state.wallPage.postData.push(newPost)
-			this._state.wallPage.newPostText = ''
-			this._renderEntireTree(this._state)
-		} else if (action.type === MODE_POST_TEXT) {
-			this._state.wallPage.newPostText = action.newText
-			this._renderEntireTree(this._state)
-		} else if (action.type === SEND_NEW_MESSAGE) {
-			let newMessage = {
-				id: this._state.messagePage.messageData.length + 1,
-				message: this._state.messagePage.messageText,
-			}
-			this._state.messagePage.messageData.push(newMessage)
-			this._state.messagePage.messageText = ''
-			this._renderEntireTree(this._state)
-		} else if (action.type === MODE_MESSAGE_TEXT) {
-			this._state.messagePage.messageText = action.newTextMessage
-			this._renderEntireTree(this._state)
-		}
+		wallPageReducer(this._state.wallPage, action)
+		messagePageReducer(this._state.messagePage, action)
+		sideBarReducer(this._state.sideBar, action)
+
+		this._renderEntireTree(this._state)
 	}
 }
-
-export const addNewPostActionCreator = () => ({ type: ADD_NEW_POST })
-
-export const modePostTextActionCreator = (text) => ({ type: MODE_POST_TEXT, newText: text })
-
-export const sendNewMessageActionCreator = () => ({ type: SEND_NEW_MESSAGE })
-
-export const modeMessageTextActionCreator = (text) => ({ type: MODE_MESSAGE_TEXT, newTextMessage: text })
 
 export default store;

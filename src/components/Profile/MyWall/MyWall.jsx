@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './MyWall.module.css'
 import Post from './Post/Post'
-import { addNewPostActionCreator, modePostTextActionCreator } from '../../../redux/state'
+import { addNewPostActionCreator, modePostTextActionCreator } from '../../../redux/wallPage_reducer'
 
 const MyWall = (props) => {
 
