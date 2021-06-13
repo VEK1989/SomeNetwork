@@ -5,17 +5,17 @@ let initialState = {
 	postData: [
 		{
 			id: 1,
-			massage: "Hello my friend",
+			message: "Hello my friend",
 			likeCount: 3
 		},
 		{
 			id: 2,
-			massage: "How are you",
+			message: "How are you",
 			likeCount: 43
 		},
 		{
 			id: 3,
-			massage: "It's me!",
+			message: "It's me!",
 			likeCount: 12
 		}
 	],

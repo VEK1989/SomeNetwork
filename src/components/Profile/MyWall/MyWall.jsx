@@ -1,22 +1,18 @@
 import React from 'react'
 import classes from './MyWall.module.css'
 import Post from './Post/Post'
-import { addNewPostActionCreator, modePostTextActionCreator } from '../../../redux/wallPage_reducer'
 
 const MyWall = (props) => {
-
-	let postElement = props.posts.map(p => <Post message={p.massage} likeCount={p.likeCount} />)
+	let postElement = props.posts.map(p => <Post message={p.message} likeCount={p.likeCount} />)
 	let myNewPost = React.createRef()
 
 	let addMyPost = () => {
-		props.dispatch(addNewPostActionCreator())
+		props.addNewPost()
 	}
 
 	let onPostChange = () => {
 		let text = myNewPost.current.value
-		let action = modePostTextActionCreator(text)
-
-		props.dispatch(action)
+		props.modeMyPost(text)
 	}
 
 	return (

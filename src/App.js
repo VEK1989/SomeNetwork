@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header/Header';
-import Messages from './components/Messages/Messages';
+import MessagesContainer from './components/Messages/MessagesContainer';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import { BrowserRouter, Route } from 'react-router-dom'
@@ -15,8 +15,8 @@ function App(props) {
         <Header />
         <Navbar state={props.state.sideBar} />
         <div className="conteiner">
-          <Route path="/profile" render={() => <Profile wallPage={props.state.wallPage} dispatch={props.dispatch} />} />
-          <Route path="/messages" render={() => <Messages state={props.state.messagePage} dispatch={props.dispatch} />} />
+          <Route path="/profile" render={() => <Profile store={props.store} />} />
+          <Route path="/messages" render={() => <MessagesContainer store={props.store} />} />
           <Route path="/news" render={() => <News />} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/settings" render={() => <Settings />} />
