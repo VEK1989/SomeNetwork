@@ -6,7 +6,7 @@ const Profile = (props) => {
 	return (
 		<main className={classes.profile}>
 			<ProfileInfo />
-			<MyWallContainer store={props.store} />
+			<MyWallContainer />
 		</main>
 	);
 };

@@ -25,17 +25,22 @@ let initialState = {
 const wallPageReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_NEW_POST:
-			let newPost = {
-				id: state.postData.length + 1,
-				message: state.newPostText,
-				likeCount: 0,
+			return {
+				...state,
+				postData: [...state.postData,
+				{
+					id: state.postData.length + 1,
+					message: state.newPostText,
+					likeCount: 0,
+				}
+				],
+				newPostText: '',
 			}
-			state.postData.push(newPost)
-			state.newPostText = ''
-			return state
 		case MODE_POST_TEXT:
-			state.newPostText = action.newText
-			return state
+			return {
+				...state,
+				newPostText: action.newText,
+			}
 		default:
 			return state
 	}

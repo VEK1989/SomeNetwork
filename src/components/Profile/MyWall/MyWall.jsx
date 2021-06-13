@@ -3,7 +3,7 @@ import classes from './MyWall.module.css'
 import Post from './Post/Post'
 
 const MyWall = (props) => {
-	let postElement = props.posts.map(p => <Post message={p.message} likeCount={p.likeCount} />)
+	let postElement = props.posts.map(p => <Post message={p.message} likeCount={p.likeCount} key={p.id} />)
 	let myNewPost = React.createRef()
 
 	let addMyPost = () => {

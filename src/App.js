@@ -13,10 +13,10 @@ function App(props) {
     <BrowserRouter>
       <div className="wrapper">
         <Header />
-        <Navbar state={props.state.sideBar} />
+        <Navbar />
         <div className="conteiner">
-          <Route path="/profile" render={() => <Profile store={props.store} />} />
-          <Route path="/messages" render={() => <MessagesContainer store={props.store} />} />
+          <Route path="/profile" render={() => <Profile />} />
+          <Route path="/messages" render={() => <MessagesContainer />} />
           <Route path="/news" render={() => <News />} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/settings" render={() => <Settings />} />

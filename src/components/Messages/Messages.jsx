@@ -4,8 +4,8 @@ import Dialogs from './Dialogs/Dialogs';
 import classes from './Messages.module.css';
 
 const Messages = (props) => {
-	let chatElement = props.chat.map(c => <Chat name={c.name} id={c.id} />)
-	let messageElement = props.message.map(m => <Dialogs message={m.message} />)
+	let chatElement = props.chat.map(c => <Chat name={c.name} key={c.id} id={c.id} />)
+	let messageElement = props.message.map(m => <Dialogs message={m.message} key={m.id} />)
 	let myMessage = React.createRef()
 
 	let sendMessage = () => {

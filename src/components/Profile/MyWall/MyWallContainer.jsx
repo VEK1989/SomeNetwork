@@ -1,20 +1,21 @@
-import React from 'react'
+import { connect } from 'react-redux';
 import { addNewPostActionCreator, modePostTextActionCreator } from '../../../redux/wallPage_reducer'
 import MyWall from './MyWall';
 
-const MyWallContainer = (props) => {
-	let posts = props.store.getState()
-
-	let addNewPost = () => {
-		props.store.dispatch(addNewPostActionCreator())
+const mapStateToProps = (state) => {
+	return {
+		posts: state.wallPage.postData,
+		newPostText: state.wallPage.newPostText,
 	}
+}
 
-	let modeMyPost = (text) => {
-		let action = modePostTextActionCreator(text)
-		props.store.dispatch(action)
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addNewPost: () => dispatch(addNewPostActionCreator()),
+		modeMyPost: (text) => dispatch(modePostTextActionCreator(text)),
 	}
+}
 
-	return (<MyWall addNewPost={addNewPost} modeMyPost={modeMyPost} posts={posts.wallPage.postData} newPostText={posts.wallPage.newPostText} />);
-};
+const MyWallContainer = connect(mapStateToProps, mapDispatchToProps)(MyWall)
 
 export default MyWallContainer;

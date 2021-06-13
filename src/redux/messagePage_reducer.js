@@ -52,16 +52,21 @@ let initialState = {
 const messagePageReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case SEND_NEW_MESSAGE:
-			let newMessage = {
-				id: state.messageData.length + 1,
-				message: state.messageText,
+			return {
+				...state,
+				messageData: [...state.messageData,
+				{
+					id: state.messageData.length + 1,
+					message: state.messageText,
+				}
+				],
+				messageText: ''
 			}
-			state.messageData.push(newMessage)
-			state.messageText = ''
-			return state
 		case MODE_MESSAGE_TEXT:
-			state.messageText = action.newTextMessage
-			return state
+			return {
+				...state,
+				messageText: action.newTextMessage
+			}
 		default:
 			return state
 	}
