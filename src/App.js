@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './components/Header/Header';
+import UsersContainer from './components/Users/UsersContainer';
 import MessagesContainer from './components/Messages/MessagesContainer';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
@@ -19,6 +20,7 @@ function App(props) {
           <Route path="/messages" render={() => <MessagesContainer />} />
           <Route path="/news" render={() => <News />} />
           <Route path="/music" render={() => <Music />} />
+          <Route path="/users" render={() => <UsersContainer />} />
           <Route path="/settings" render={() => <Settings />} />
         </div>
       </div>
