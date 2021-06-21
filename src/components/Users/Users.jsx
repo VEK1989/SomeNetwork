@@ -4,9 +4,7 @@ import * as axios from 'axios'
 import userPhoto from '../../assets/img/userPhoto.png'
 
 class Users extends React.Component {
-	constructor(props) {
-		super(props);
-
+	componentDidMount() {
 		axios.get('http://localhost:3030/users')
 			.then(response => {
 				this.props.setUsers(response.data.items)
