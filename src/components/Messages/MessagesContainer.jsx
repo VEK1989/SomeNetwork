@@ -1,5 +1,5 @@
 import Messages from './Messages';
-import { sendNewMessageActionCreator, modeMessageTextActionCreator } from '../../redux/messagePage_reducer'
+import { sendMyMessage, modeMessages } from '../../redux/messagePage_reducer'
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
@@ -10,13 +10,9 @@ const mapStateToProps = (state) => {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		sendMyMessage: () => dispatch(sendNewMessageActionCreator()),
-		modeMessages: (text) => dispatch(modeMessageTextActionCreator(text))
-	}
-}
-
-const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages)
+const MessagesContainer = connect(mapStateToProps, {
+	sendMyMessage,
+	modeMessages
+})(Messages)
 
 export default MessagesContainer;

@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { follow, setCurrentPage, setTotalUsers, setUsers, toggleIsFetching, unfollow } from "../../redux/users_reduser";
 import Users from "./Users";
 import * as axios from 'axios';
-import preloader from '../../assets/img/puff.svg'
 
 class UsersContainer extends React.Component {
 	componentDidMount() {
@@ -49,16 +48,12 @@ const mapStateToProps = (state) => {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		follow: (userId) => dispatch(follow(userId)),
-		unfollow: (userId) => dispatch(unfollow(userId)),
-		setUsers: (users) => dispatch(setUsers(users)),
-		setCurrentPage: (currentPage) => dispatch(setCurrentPage(currentPage)),
-		setTotalUsers: (totalUsers) => dispatch(setTotalUsers(totalUsers)),
-		toggleIsFetching: (isFetching => dispatch(toggleIsFetching(isFetching)))
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
+export default connect(mapStateToProps, {
+	follow,
+	unfollow,
+	setUsers,
+	setCurrentPage,
+	setTotalUsers,
+	toggleIsFetching
+})(UsersContainer)
 

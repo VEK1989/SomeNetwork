@@ -1,5 +1,6 @@
 const ADD_NEW_POST = 'ADD-NEW-POST'
 const MODE_POST_TEXT = 'MODE-POST-TEXT'
+const SET_PROFILE = 'SET_PROFILE'
 
 let initialState = {
 	postData: [
@@ -19,10 +20,11 @@ let initialState = {
 			likeCount: 12
 		}
 	],
-	newPostText: ""
+	newPostText: '',
+	profile: null
 }
 
-const wallPageReducer = (state = initialState, action) => {
+const profilePageReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_NEW_POST:
 			return {
@@ -41,12 +43,18 @@ const wallPageReducer = (state = initialState, action) => {
 				...state,
 				newPostText: action.newText,
 			}
+		case SET_PROFILE:
+			return {
+				...state,
+				profile: action.profile
+			}
 		default:
 			return state
 	}
 }
 
-export const addNewPostActionCreator = () => ({ type: ADD_NEW_POST })
-export const modePostTextActionCreator = (text) => ({ type: MODE_POST_TEXT, newText: text })
+export const addNewPost = () => ({ type: ADD_NEW_POST })
+export const modeMyPost = (text) => ({ type: MODE_POST_TEXT, newText: text })
+export const setProfile = (profile) => ({ type: SET_PROFILE, profile })
 
-export default wallPageReducer;
+export default profilePageReducer;

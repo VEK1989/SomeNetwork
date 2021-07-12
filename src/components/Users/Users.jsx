@@ -2,7 +2,8 @@ import React from 'react';
 import classes from './Users.Module.css';
 import userPhoto from '../../assets/img/userPhoto.png';
 import Paginator from '../Commons/Paginator';
-import preloader from '../../assets/img/puff.svg'
+import preloader from '../../assets/img/puff.svg';
+import { NavLink } from 'react-router-dom';
 
 const Users = (props) => {
 	return (
@@ -18,10 +19,12 @@ const Users = (props) => {
 				props.users.map(u => {
 					return <div key={u.id} className={classes.users_item}>
 						<div>
-							{
-								props.isFetching ? preloader
-									: <img src={u.photos.small !== null ? u.photos.small : userPhoto} className={classes.userPhoto} alt='UserPhoto' />
-							}
+							<NavLink to={`/profile/${u.id}`}>
+								{
+									props.isFetching ? <img src={preloader} alt="#" height='100px' />
+										: <img src={u.photos.small !== null ? u.photos.small : userPhoto} className={classes.userPhoto} alt='UserPhoto' />
+								}
+							</NavLink>
 							<span className={classes.userName}>{u.name}</span>
 							<div>
 								{u.followStatus ? <button className={classes.Btn} onClick={() => { props.unfollow(u.id) }}>Unfollow</button>

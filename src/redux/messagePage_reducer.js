@@ -72,7 +72,7 @@ const messagePageReducer = (state = initialState, action) => {
 	}
 }
 
-export const sendNewMessageActionCreator = () => ({ type: SEND_NEW_MESSAGE })
-export const modeMessageTextActionCreator = (text) => ({ type: MODE_MESSAGE_TEXT, newTextMessage: text })
+export const sendMyMessage = () => ({ type: SEND_NEW_MESSAGE })
+export const modeMessages = (text) => ({ type: MODE_MESSAGE_TEXT, newTextMessage: text })
 
 export default messagePageReducer;
