@@ -3,7 +3,6 @@ import altPhoto from '../../../assets/img/userPhoto.png';
 import preloader from '../../../assets/img/puff.svg';
 
 const ProfileInfo = (props) => {
-	debugger
 	if (!props.profile) {
 		return <img src={preloader} alt="#" />
 	}
@@ -15,7 +14,7 @@ const ProfileInfo = (props) => {
 				<span className={classes.aboutMe}>{props.profile.aboutMe}</span>
 				<div>
 					<h3>Contacts:</h3>
-					<div >
+					<div className={classes.contacts}>
 						{
 							props.profile.contacts.facebook != null
 								? <div>facebook: <a href={`http://${props.profile.contacts.facebook}`}>{props.profile.contacts.facebook}</a></div>

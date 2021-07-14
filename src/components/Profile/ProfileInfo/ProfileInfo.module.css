@@ -22,12 +22,12 @@
 	font-size: small;
 }
 
-a{
+.contacts a{
 	text-decoration: none;
 	color: #111;
 	transition: 0.5s;
 }
 
-a:hover {
+.contacts a:hover {
 	color: #BC9CFF;
 }

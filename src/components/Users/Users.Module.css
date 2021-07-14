@@ -21,6 +21,11 @@
 	border: 1px solid #8BA4F9;
 }
 
+.userName{
+	font-size: 18px;
+	margin-left: 10px;
+}
+
 .Btn{
 	color: #ffff;
     padding: 5px 15px;

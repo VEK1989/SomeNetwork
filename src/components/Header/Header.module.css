@@ -1,12 +1,25 @@
 .header {
     grid-area: header;
     background-color: #BC9CFF;
-    padding: 8px;
+    padding: 10px;
     border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo{
     width: 45px;
     height: 40px;
     color: #BC9CFF;
+}
+
+.link{
+    text-decoration: none;
+    color: #000;
+    transition: 0.2s;
+}
+
+.link:hover {
+    color: #ffffff;
 }
