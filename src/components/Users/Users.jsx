@@ -4,23 +4,14 @@ import userPhoto from '../../assets/img/userPhoto.png';
 import Paginator from '../Commons/Paginator';
 import preloader from '../../assets/img/puff.svg';
 import { NavLink } from 'react-router-dom';
-import { followed, unFollowed } from '../../api/api';
 
 const Users = (props) => {
 	const followToUser = (userId) => {
-		followed(userId).then(data => {
-			if (data.resultCode === 0) {
-				props.follow(userId)
-			}
-		});
+		props.getAcceptFollow(userId)
 	}
 
 	const unFollowToUser = (userId) => {
-		unFollowed(userId).then(data => {
-			if (data.resultCode === 0) {
-				props.follow(userId)
-			}
-		});
+		props.getUnAcceptFollow(userId)
 	}
 
 	return (

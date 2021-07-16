@@ -1,26 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { follow, setCurrentPage, setTotalUsers, setUsers, toggleIsFetching, unfollow } from "../../redux/users_reduser";
+import { getUnAcceptFollow, getAllNeedUsers, getNewPageUsers, getAcceptFollow } from "../../redux/users_reduser";
 import Users from "./Users";
-import { getUsers } from '../../api/api'
 
 class UsersContainer extends React.Component {
 	componentDidMount() {
-		this.props.toggleIsFetching(true)
-		getUsers(this.props.currentPage, this.props.currentSize).then(data => {
-			this.props.toggleIsFetching(false)
-			this.props.setUsers(data.items)
-			this.props.setTotalUsers(data.totalCount)
-		});
+		this.props.getAllNeedUsers(this.props.currentPage, this.props.currentSize)
 	}
 
 	onPageChenched = (pageNumber) => {
-		this.props.toggleIsFetching(true)
-		this.props.setCurrentPage(pageNumber)
-		getUsers(pageNumber, this.props.currentSize).then(data => {
-			this.props.toggleIsFetching(false)
-			this.props.setUsers(data.items)
-		});
+		this.props.getNewPageUsers(pageNumber, this.props.currentSize)
 	}
 	render() {
 		return (
@@ -29,8 +18,8 @@ class UsersContainer extends React.Component {
 				pageSize={this.props.pageSize}
 				currentPage={this.props.currentPage}
 				onPageChenched={this.onPageChenched}
-				follow={this.props.follow}
-				unfollow={this.props.unfollow}
+				getAcceptFollow={this.props.getAcceptFollow}
+				getUnAcceptFollow={this.props.getUnAcceptFollow}
 				isFetching={this.props.isFetching} />)
 	}
 }
@@ -47,11 +36,9 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-	follow,
-	unfollow,
-	setUsers,
-	setCurrentPage,
-	setTotalUsers,
-	toggleIsFetching
+	getAllNeedUsers,
+	getNewPageUsers,
+	getAcceptFollow,
+	getUnAcceptFollow
 })(UsersContainer)
 

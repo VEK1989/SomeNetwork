@@ -1,3 +1,5 @@
+import { getProfile } from "../api/api"
+
 const ADD_NEW_POST = 'ADD-NEW-POST'
 const MODE_POST_TEXT = 'MODE-POST-TEXT'
 const SET_PROFILE = 'SET_PROFILE'
@@ -56,5 +58,13 @@ const profilePageReducer = (state = initialState, action) => {
 export const addNewPost = () => ({ type: ADD_NEW_POST })
 export const modeMyPost = (text) => ({ type: MODE_POST_TEXT, newText: text })
 export const setProfile = (profile) => ({ type: SET_PROFILE, profile })
+
+export const getProfileUserInfo = (userId) => {
+	return (dispatch) => {
+		getProfile(userId).then(data => {
+			dispatch(setProfile(data))
+		});
+	}
+}
 
 export default profilePageReducer;
