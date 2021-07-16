@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import Chat from './Chat/Chat';
 import Dialogs from './Dialogs/Dialogs';
 import classes from './Messages.module.css';
@@ -16,6 +17,8 @@ const Messages = (props) => {
 		let text = myMessage.current.value
 		props.modeMessages(text)
 	}
+
+	if (!props.isLogin) return <Redirect to='/login' />
 
 	return (
 		<div className={classes.messages}>

@@ -7,6 +7,7 @@ const mapStateToProps = (state) => {
 		chat: state.messagePage.chatData,
 		message: state.messagePage.messageData,
 		messageText: state.messagePage.messageText,
+		isLogin: state.auth.isLogin
 	}
 }
 
