@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Users.Module.css';
 import userPhoto from '../../assets/img/userPhoto.png';
-import Paginator from '../Commons/Paginator';
+import Paginator from '../Commons/Paginator/Paginator';
 import preloader from '../../assets/img/puff.svg';
 import { NavLink } from 'react-router-dom';
 

@@ -1,6 +1,7 @@
 import classes from './ProfileInfo.module.css';
 import altPhoto from '../../../assets/img/userPhoto.png';
 import preloader from '../../../assets/img/puff.svg';
+import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {
 	if (!props.profile) {
@@ -11,7 +12,7 @@ const ProfileInfo = (props) => {
 			<img src={props.profile.photos.large != null ? props.profile.photos.large : altPhoto} alt="avatar" className={classes.avatarPhoto} />
 			<div className={classes.profileInfo}>
 				<h1>{props.profile.fullName}</h1>
-				<span className={classes.aboutMe}>{props.profile.aboutMe}</span>
+				<ProfileStatus className={classes.aboutMe} aboutMe={props.profile.aboutMe} />
 				<div>
 					<h3>Contacts:</h3>
 					<div className={classes.contacts}>
