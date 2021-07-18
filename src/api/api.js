@@ -33,3 +33,7 @@ export const getAuthMe = () => {
 	return instance.get(`auth/me`)
 		.then(response => response.data)
 }
+
+export const login = (values) => {
+	return instance.post('auth/login', values)
+}
