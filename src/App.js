@@ -1,5 +1,5 @@
 import './App.css';
-import HeaderContainer from './components/Header/HeaderContainer';
+import Header from './components/Header/Header';
 import UsersContainer from './components/Users/UsersContainer';
 import MessagesContainer from './components/Messages/MessagesContainer';
 import Navbar from './components/Navbar/Navbar';
@@ -14,7 +14,7 @@ function App(props) {
   return (
     <BrowserRouter>
       <div className="wrapper">
-        <HeaderContainer />
+        <Header />
         <Navbar />
         <div className="conteiner">
           <Route path="/profile/:userId?" render={() => <ProfileContainer />} />

@@ -1,8 +1,15 @@
 import React from 'react';
 import classes from './LoginPage.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLoginMe } from '../../redux/auth-reduser';
+import { getIsLogin } from '../../redux/selectors';
+import { Redirect } from 'react-router-dom';
 
 const LoginPage = () => {
+	const dispatch = useDispatch()
+
+	const isLogin = useSelector(getIsLogin)
 
 	const validateForm = (values) => {
 		const errors = {};
@@ -17,9 +24,12 @@ const LoginPage = () => {
 	}
 
 	const submit = (values, { setSubmitting }) => {
-		console.log(values)
+		dispatch(getLoginMe(values.email, values.password, values.rememberMe))
 		setSubmitting(false)
 	}
+
+	if (isLogin) return <Redirect to='/profile' />
+
 	return (
 		<div className={classes.login}>
 			<h3>Login</h3>

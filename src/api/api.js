@@ -34,6 +34,10 @@ export const getAuthMe = () => {
 		.then(response => response.data)
 }
 
-export const login = (values) => {
-	return instance.post('auth/login', values)
+export const login = (email, password, rememberMe) => {
+	return instance.post('auth/login', { email, password, rememberMe })
+}
+
+export const logout = () => {
+	return instance.delete('auth/login')
 }

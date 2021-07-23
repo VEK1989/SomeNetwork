@@ -1,4 +1,4 @@
-import { getAuthMe, login } from "../api/api"
+import { getAuthMe, login, logout } from "../api/api"
 
 const SET_AUTH_USER = 'SET_AUTH_USER'
 
@@ -14,8 +14,7 @@ const authUserReducer = (state = initialState, action) => {
 		case SET_AUTH_USER:
 			return {
 				...state,
-				...action.data,
-				isLogin: true
+				...action.payload
 			}
 
 		default:
@@ -23,25 +22,34 @@ const authUserReducer = (state = initialState, action) => {
 	}
 }
 
-export const setAuthUser = (userId, email, login) => ({ type: SET_AUTH_USER, data: { userId, email, login } })
+export const setAuthUser = (userId, email, login, isLogin) => ({ type: SET_AUTH_USER, payload: { userId, email, login, isLogin } })
 
 export const getAuthUser = () => {
 	return (dispatch) => {
 		getAuthMe().then(data => {
 			if (data.resultCode === 0) {
 				let { id, email, login } = data.data
-				dispatch(setAuthUser(id, email, login))
+				dispatch(setAuthUser(id, email, login, true))
 			}
 		});
 	}
 }
 
-export const getLoginMe = (values) => {
+export const getLoginMe = (email, password, rememberMe) => {
 	return (dispatch) => {
-		login(values).then(data => {
+		login(email, password, rememberMe).then(data => {
 			if (data.resultCode === 0) {
-				let { id, email, login } = data.data
-				dispatch(setAuthUser(id, email, login))
+				dispatch(getAuthUser())
+			}
+		});
+	}
+}
+
+export const getLogoutMe = () => {
+	return (dispatch) => {
+		logout().then(data => {
+			if (data.resultCode === 0) {
+				dispatch(setAuthUser(null, null, null, false))
 			}
 		});
 	}
