@@ -48,3 +48,7 @@
 	background: #fff;
 	color: #BC9CFF;
 }
+
+.errorMessage{
+	color: #ff0000;
+}

@@ -23,8 +23,8 @@ const LoginPage = () => {
 		return errors;
 	}
 
-	const submit = (values, { setSubmitting }) => {
-		dispatch(getLoginMe(values.email, values.password, values.rememberMe))
+	const submit = (values, { setSubmitting, setStatus }) => {
+		dispatch(getLoginMe(values.email, values.password, values.rememberMe, setStatus))
 		setSubmitting(false)
 	}
 
@@ -38,15 +38,16 @@ const LoginPage = () => {
 				validate={validateForm}
 				onSubmit={submit}
 			>
-				{({ isSubmitting }) => (
+				{({ isSubmitting, status }) => (
 					<Form className={classes.formField}>
-						<ErrorMessage name="email" component="div" />
+						<ErrorMessage name="email" component="div" className={classes.errorMessage} />
 						<Field type="email" name="email" className={classes.inputField} />
-						<ErrorMessage name="password" component="div" />
+						<ErrorMessage name="password" component="div" className={classes.errorMessage} />
 						<Field type="password" name="password" className={classes.inputField} />
 						<div className={classes.checkboxField}>
 							<Field type="checkbox" name="rememberMe" />remember me
 						</div>
+						<div className={classes.errorMessage}>{status}</div>
 						<button type="submit" disabled={isSubmitting} className={classes.sendBtn}>
 							LOGIN
 						</button>

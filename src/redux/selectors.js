@@ -6,3 +6,7 @@ export const getLogin = (state) => {
 	return state.auth.login
 }
 
+export const getInitialise = (state) => {
+	return state.app.initialised
+}
+

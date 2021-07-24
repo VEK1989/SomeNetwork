@@ -35,11 +35,13 @@ export const getAuthUser = () => {
 	}
 }
 
-export const getLoginMe = (email, password, rememberMe) => {
+export const getLoginMe = (email, password, rememberMe, setStatus) => {
 	return (dispatch) => {
 		login(email, password, rememberMe).then(data => {
 			if (data.resultCode === 0) {
 				dispatch(getAuthUser())
+			} else {
+				setStatus(data.messages)
 			}
 		});
 	}

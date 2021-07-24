@@ -9,8 +9,24 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import LoginPage from './components/Login/LoginPage';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getInitialise } from './redux/selectors';
+import preloader from './assets/img/puff.svg';
+import { initialiseApp } from './redux/app-reduser';
 
-function App(props) {
+const App = () => {
+  const initialise = useSelector(getInitialise)
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(initialiseApp())
+  }, [])
+
+  if (!initialise) {
+    return <img src={preloader} alt='preload' width='200px' height='200px' />
+  }
   return (
     <BrowserRouter>
       <div className="wrapper">
